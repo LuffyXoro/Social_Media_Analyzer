@@ -2,6 +2,11 @@ import requests
 import os
 from dotenv import load_dotenv
 
+
+from preprocessing.clean_text import json_to_dataframe
+
+
+
 # load .env file
 load_dotenv()
 
@@ -31,8 +36,12 @@ def fetch_comments(video_id, max_results=50):
 if __name__=="__main__":
     video_id="PD_VjO99LLw"
     data=fetch_comments(video_id)
+    df=json_to_dataframe(data)
+    print(df.head())
 
-    if data:
-        print("Keys in response:",data.keys())
-        print("/n")
-        print("First sample: ",data["items"][0])
+#     if data:
+#         print("Keys in response:",data.keys())
+#         print("/n")
+#         print("First sample: ",data["items"][0])
+
+# data=fetch
