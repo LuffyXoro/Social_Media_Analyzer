@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 
 
 from preprocessing.clean_text import json_to_dataframe
+from preprocessing.clean_text import clean_text
 
 
 
@@ -37,7 +38,8 @@ if __name__=="__main__":
     video_id="PD_VjO99LLw"
     data=fetch_comments(video_id)
     df=json_to_dataframe(data)
-    print(df.head())
+    clean_comment=clean_text(df['comment'][0])
+    print(clean_comment)
 
 #     if data:
 #         print("Keys in response:",data.keys())
