@@ -5,3 +5,7 @@ numpy
 # SQLite 
 Flask
 seaborn
+
+nltk
+scikit-learn
+joblib
