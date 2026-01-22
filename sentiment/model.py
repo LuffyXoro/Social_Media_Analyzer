@@ -2,13 +2,14 @@ import nltk
 nltk.download('movie_reviews')
 nltk.download('punkt')
 
+import os
 import nltk
 import joblib
 from nltk.corpus import movie_reviews
 
 from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression # type: ignore
+from sklearn.model_selection import train_test_split 
 from sklearn.metrics import accuracy_score, classification_report
 
 def load_labeled_data():
@@ -39,8 +40,31 @@ def train_sentiment_model():
     joblib.dump(model,'sentiment/sentiment_model.pkl')
     joblib.dump(vectorizer,'sentiment/vectorizer.pkl')
 
-if __name__=="__main__":
-    train_sentiment_model()
+
+MODEL_PATH = os.path.join("sentiment", "sentiment_model.pkl")
+VECTORIZER_PATH = os.path.join("sentiment", "vectorizer.pkl")
+
+if os.path.exists(MODEL_PATH) and os.path.exists(VECTORIZER_PATH):
+    sentiment_model = joblib.load(MODEL_PATH)
+    vectorizer = joblib.load(VECTORIZER_PATH)
+else:
+    sentiment_model = None
+    vectorizer = None
+
+def predict_sentiment(text):      # input:cleaned text ; output:semtiment label (pos/neg)
+    if not isinstance(text,str) or not text.strip():
+        return "neutral"
+    if sentiment_model is None or vectorizer is None:
+        raise ValueError("Not trained model. Please train the model first.Refer to train_sentiment_model() funstion.")
+    
+    x=vectorizer.transform([text])
+    prediction=sentiment_model.predict(x)[0]
+
+    return prediction 
+
+# if __name__=="__main__":
+#     train_sentiment_model()
+
 
 
 
