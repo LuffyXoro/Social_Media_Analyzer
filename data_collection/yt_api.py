@@ -34,12 +34,12 @@ def fetch_comments(video_id, max_results=50):
         print(f"Error fetching comments: {response.status_code}")
         return None
 
-if __name__=="__main__":
-    video_id="PD_VjO99LLw"
-    data=fetch_comments(video_id)
-    df=json_to_dataframe(data)
-    clean_comment=clean_text(df['comment'][0])
-    print(clean_comment)
+# if __name__=="__main__":
+#     video_id="PD_VjO99LLw"
+#     data=fetch_comments(video_id)
+#     df=json_to_dataframe(data)
+#     clean_comment=clean_text(df['comment'][0])
+#     print(clean_comment)
 
 #     if data:
 #         print("Keys in response:",data.keys())
