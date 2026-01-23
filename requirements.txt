@@ -9,3 +9,7 @@ seaborn
 nltk
 scikit-learn
 joblib
+
+
+streamlit
+wordcloud
