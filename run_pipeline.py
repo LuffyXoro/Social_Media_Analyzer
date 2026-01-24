@@ -18,11 +18,13 @@ def run(video_id):
 
     print(keyword_frequency(df['cleaned_comment'],top_n=20))
     print("\nTop keywords in negative comments:")
-    print(keyword_by_sentiment(df,sentiment_label='neg',top_n=10))
+    print(keyword_by_sentiment(df,sentiment_label='negative',top_n=10))
+    return df # bcz the dashboard expects data to be returned
 
-if __name__=='__main__':
-    video_id="PD_VjO99LLw"
-    run(video_id)
+# if __name__=='__main__':
+#     video_id="PD_VjO99LLw"
+#     run(video_id)
+
 
 
     
