@@ -39,8 +39,7 @@ def train_sentiment_model():
 
     joblib.dump(model,'sentiment/sentiment_model.pkl')
     joblib.dump(vectorizer,'sentiment/vectorizer.pkl')
-
-
+              
 MODEL_PATH = os.path.join("sentiment", "sentiment_model.pkl")
 VECTORIZER_PATH = os.path.join("sentiment", "vectorizer.pkl")
 
@@ -60,7 +59,9 @@ def predict_sentiment(text):      # input:cleaned text ; output:semtiment label 
     x=vectorizer.transform([text])
     prediction=sentiment_model.predict(x)[0]
 
-    return prediction 
+    return prediction
+
+
 
 # if __name__=="__main__":
 #     train_sentiment_model()
