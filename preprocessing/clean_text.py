@@ -8,8 +8,9 @@ def json_to_dataframe(json_data):
     
     for item in json_data['items']:
         snippet=item['snippet']['topLevelComment']['snippet']
-        comments.append(snippet['textDisplay'])
-    return pd.DataFrame(comments, columns=['comment'])
+        comments.append({"comment":snippet['textDisplay'],
+                        'published_at':snippet['publishedAt'],})
+    return pd.DataFrame(comments)
 
 
 # CLEANING TEXT FUNCTIONS
