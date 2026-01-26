@@ -51,3 +51,4 @@ def train_sentiment_model():
     joblib.dump(vectorizer,'sentiment/vectorizer.pkl')
     
     
+    
