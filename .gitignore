@@ -1,4 +1,5 @@
 api.py
 .env
 __pycache__/
-sentimet/model.py
+venv/
+*.pyc
