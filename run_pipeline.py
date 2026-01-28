@@ -4,10 +4,10 @@ import pandas as pd
 from data_collection.yt_api import fetch_comments
 from preprocessing.clean_text import json_to_dataframe, clean_text
 from sentiment.inference import predict_sentiment
-from analysis.trend_analysis import (keyword_frequency,
+from analysis.keyword_analysis import (keyword_frequency,
                                         keyword_by_sentiment)
 
-from analysis.time_trends import (sentiment_over_time,
+from analysis.sentiment_trends import (sentiment_over_time,
                                   sentiment_ratio_over_time,
                                   keyword_trends_over_time)
 
