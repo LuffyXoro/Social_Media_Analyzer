@@ -42,3 +42,4 @@ if __name__ == "__main__":
         print(f"Text: {text}\nPredicted Sentiment: {sentiment}\n")
         label, confidence = predict_sentiment_confidence(text)
         print(f"Predicted Label: {label}, Confidence: {confidence}\n")
+

@@ -14,3 +14,12 @@ def keyword_trends_over_time(df, keyword):
     daily_counts = df.groupby(['date', 'contains_keyword']).size().unstack(fill_value=0)
     return daily_counts
 
+def rolling_sentiment_ratio(df,window=7):
+    daily=(
+        df.groupby(['date','sentiment'])
+        .size()
+        .unstack(fill_value=0)
+
+    )
+    daily_pct=daily.div(daily.sum(axis=1),axis=0)
+    return daily_pct.rolling(window).mean()
