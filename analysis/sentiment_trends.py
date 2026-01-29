@@ -1,3 +1,4 @@
+
 def sentiment_over_time(df):
     return (
         df.groupby(['date', 'sentiment']).size().unstack(fill_value=0)

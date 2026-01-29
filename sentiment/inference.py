@@ -28,18 +28,4 @@ def predict_sentiment_confidence(text):
 
     return label, confidence
 
-if __name__ == "__main__":
-    sample_texts = [
-        "I absolutely love this product! It has changed my life for the better.",
-        "This is the worst service I have ever experienced. Totally disappointed.",
-        "It's okay, not great but not terrible either.",
-        "",
-        None
-    ]
-
-    for text in sample_texts:
-        sentiment = predict_sentiment(text)
-        print(f"Text: {text}\nPredicted Sentiment: {sentiment}\n")
-        label, confidence = predict_sentiment_confidence(text)
-        print(f"Predicted Label: {label}, Confidence: {confidence}\n")
 
