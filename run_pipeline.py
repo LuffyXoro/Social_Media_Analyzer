@@ -9,7 +9,10 @@ from analysis.keyword_analysis import (keyword_frequency,
 
 from analysis.sentiment_trends import (sentiment_over_time,
                                   sentiment_ratio_over_time,)
-                                  
+
+from utils.logger import logger
+
+
 
 
 def run(video_id):
@@ -26,9 +29,13 @@ def run(video_id):
     if df.empty:
         return "No comments found for this video."
     
-    #step - 3 : Text cleaning 
+    #step - 3 : Text cleaning and storing intermediate results
+    
+    df.to_csv("data/raw/comments.csv",index=False)
 
     df['cleaned_comment']=df['comment'].apply(clean_text)
+
+    df.to_csv("data/processed/cleaned_comments.csv",index=False)
 
     # step - 4 : Sentiment Prediction
 
@@ -41,8 +48,8 @@ def run(video_id):
 
     # Results
 
-    print("Sample Data:")
-    print(df.head())
+    logger.info("Fetching Comments...")
+    logger.info(f"Total Comments Fetched: {len(df)}")
 
     print("\nTop 20 Keywords:")
     print(keyword_frequency(df['cleaned_comment'],top_n=20))

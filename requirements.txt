@@ -13,3 +13,4 @@ joblib
 
 streamlit
 wordcloud
+pyyaml

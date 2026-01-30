@@ -50,5 +50,7 @@ def train_sentiment_model():
     joblib.dump(model,'sentiment/sentiment_model.pkl')
     joblib.dump(vectorizer,'sentiment/vectorizer.pkl')
     
-    
+with open("reports/model_report.txt","w")as f:
+    f.write(classification_report(y_test,y_pred))
+
     

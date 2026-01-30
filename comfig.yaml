@@ -1,0 +1,10 @@
+yt_api:
+  max_results: 100
+
+model:
+  model_path: sentiment/sentiment_model.pkl
+  vectorizer_path: sentiment/vectorizer.pkl
+
+storage:
+  raw_data: data/raw
+  processed_data: data/processed

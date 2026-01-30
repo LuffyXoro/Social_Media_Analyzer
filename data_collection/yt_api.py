@@ -5,8 +5,10 @@ from dotenv import load_dotenv
 
 from preprocessing.clean_text import json_to_dataframe
 from preprocessing.clean_text import clean_text
+from utils.config import config
 
 
+max_results = config['yt_api']['max_results']
 
 # load .env file
 load_dotenv()
@@ -33,17 +35,17 @@ def fetch_comments(video_id, max_results=50):
     else:
         print(f"Error fetching comments: {response.status_code}")
         return None
+    
 
-# if __name__=="__main__":
-#     video_id="PD_VjO99LLw"
-#     data=fetch_comments(video_id)
-#     df=json_to_dataframe(data)
-#     clean_comment=clean_text(df['comment'][0])
-#     print(clean_comment)
+comments=[]
+next_page=None
+while True :
+    params['pageToken']=next_page
 
-#     if data:
-#         print("Keys in response:",data.keys())
-#         print("/n")
-#         print("First sample: ",data["items"][0])
+    response=requests.get(BASE_URL,params=params)
+    data=response.json()
 
-# data=fetch
+    comments.extend(data.get('items',[]))
+    next_page=data.get('nextPageToken')
+    if not next_page:
+        break

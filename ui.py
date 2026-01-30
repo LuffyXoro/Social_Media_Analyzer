@@ -99,6 +99,10 @@ st.dataframe(
     use_container_width=True
 )
 
+st.bar_chart(df["sentiment"].value_counts())
+
+st.subheader("📝 Sentiment Summary")
+
 st.subheader("⬇️ Download Reports")
 
 full_csv = df.to_csv(index=False).encode("utf-8")
