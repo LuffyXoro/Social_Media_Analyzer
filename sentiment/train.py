@@ -1,8 +1,6 @@
 # Separating the phases of training and evaluation into different functions for clarity and modularity
 
-
-import joblib 
-
+import joblib
 
 from nltk.corpus import movie_reviews
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -17,11 +15,6 @@ categories=movie_reviews.categories()
 
 pos_file_ids=movie_reviews.fileids('pos')
 neg_file_ids=movie_reviews.fileids('neg')
-# print(file_ids[:20])
-# print(words[:20])
-# print(f"Categories: {categories}")
-# print(f"Positive file ids: {len(pos_file_ids)}")
-# print(f"Negative file ids: {len(neg_file_ids)}")
 
 
 def load_labeled_data():
