@@ -1,10 +1,12 @@
 import logging
 
-logging.basicConfig(
-    # level=logging.INFO,
-    level=logging.WARNING,
-    format='%(asctime)s - %(levelname)s - %(message)s'
-)
+def get_logger(name:str)->logging.Logger:
+    logger=logging.getLogger(name)
+    logger.setlevel(logging.DEBUG)
 
-logger=logging.getLogger(__name__)
+    handler=logging.FileHandler('app.log')
+    formatter=logging.Formatter('%(asctime)s - %(name)s - %(levlname)s - %(message)s')
+    handler.setFormatter(formatter)
 
+    if not logger.hasHandlers():
+        
