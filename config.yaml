@@ -1,9 +1,14 @@
 yt_api:
   max_results: 100
 
+data:
+  max_comments: 500
+
+
 model:
   model_path: sentiment/sentiment_model.pkl
   vectorizer_path: sentiment/vectorizer.pkl
+  threshold: 0.6
 
 storage:
   raw_data: data/raw

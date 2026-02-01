@@ -1,16 +1,20 @@
 import pandas as pd
 
-
 # JSON TO DATAFRAME FUNCTION
 
-def json_to_dataframe(json_data):
-    comments = []
-    
-    for item in json_data['items']:
-        snippet=item['snippet']['topLevelComment']['snippet']
-        comments.append({"comment":snippet['textDisplay'],
-                        'published_at':snippet['publishedAt'],})
-    return pd.DataFrame(comments)
+def json_to_dataframe(items):
+    records = []
+
+    for item in items:
+        snippet = item["snippet"]["topLevelComment"]["snippet"]
+
+        records.append({
+            "comment": snippet["textDisplay"],
+            "published_at": snippet["publishedAt"],
+            "likes": snippet["likeCount"]
+        })
+
+    return pd.DataFrame(records)
 
 
 # CLEANING TEXT FUNCTIONS

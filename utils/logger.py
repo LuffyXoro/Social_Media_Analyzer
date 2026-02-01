@@ -1,12 +1,14 @@
 import logging
 
-def get_logger(name:str)->logging.Logger:
-    logger=logging.getLogger(name)
-    logger.setlevel(logging.DEBUG)
+logger = logging.getLogger("social_analyzer")
+logger.setLevel(logging.INFO)
 
-    handler=logging.FileHandler('app.log')
-    formatter=logging.Formatter('%(asctime)s - %(name)s - %(levlname)s - %(message)s')
-    handler.setFormatter(formatter)
+formatter = logging.Formatter(
+    "%(asctime)s - %(levelname)s - %(message)s"
+)
 
-    if not logger.hasHandlers():
-        
+console_handler = logging.StreamHandler()
+console_handler.setFormatter(formatter)
+
+if not logger.handlers:
+    logger.addHandler(console_handler)
