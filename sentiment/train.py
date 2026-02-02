@@ -28,22 +28,35 @@ def load_labeled_data():
     return texts,labels
 
 def train_sentiment_model():
-    texts,labels=load_labeled_data()
-    vectorizer=TfidfVectorizer(stop_words='english', max_features=5000)
-    X=vectorizer.fit_transform(texts)
-    X_train,X_test,y_train,y_test=train_test_split(X,labels,test_size=0.2,random_state=42)  
+    texts, labels = load_labeled_data()
 
-    model=LogisticRegression(max_iter=100)
-    model.fit(X_train,y_train )
-    y_pred=model.predict(X_test)    
+    vectorizer = TfidfVectorizer(stop_words='english', max_features=5000)
+    X = vectorizer.fit_transform(texts)
 
-    print("Accuracy:",accuracy_score(y_test,y_pred))
-    print("Classification Report:\n",classification_report(y_test,y_pred))  
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, labels, test_size=0.2, random_state=42
+    )
 
-    joblib.dump(model,'sentiment/sentiment_model.pkl')
-    joblib.dump(vectorizer,'sentiment/vectorizer.pkl')
-    
-with open("reports/model_report.txt","w")as f:
-    f.write(classification_report(y_test,y_pred))
+    model = LogisticRegression(max_iter=100)
+    model.fit(X_train, y_train)
+
+    y_pred = model.predict(X_test)
+
+    report = classification_report(y_test, y_pred)
+
+    print("Accuracy:", accuracy_score(y_test, y_pred))
+    print("Classification Report:\n", report)
+
+    joblib.dump(model, "sentiment/sentiment_model.pkl")
+    joblib.dump(vectorizer, "sentiment/vectorizer.pkl")
+
+    with open("reports/model_report.txt", "w") as f:
+        f.write(report)
+    print("Model and vectorizer saved successfully.")
+
+
+# if __name__ == "__main__":
+#     train_sentiment_model()
+
 
     

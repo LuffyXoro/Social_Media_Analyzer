@@ -5,16 +5,22 @@ import pandas as pd
 def json_to_dataframe(items):
     records = []
 
-    for item in items:
-        snippet = item["snippet"]["topLevelComment"]["snippet"]
+    if not isinstance(items, list):
+        return pd.DataFrame()
 
-        records.append({
-            "comment": snippet["textDisplay"],
-            "published_at": snippet["publishedAt"],
-            "likes": snippet["likeCount"]
-        })
+    for item in items:
+        try:
+            snippet = item["snippet"]["topLevelComment"]["snippet"]
+            records.append({
+                "comment": snippet.get("textDisplay", ""),
+                "likes": snippet.get("likeCount", 0),
+                "published_at": snippet.get("publishedAt", "")
+            })
+        except (KeyError, TypeError):
+            continue
 
     return pd.DataFrame(records)
+
 
 
 # CLEANING TEXT FUNCTIONS

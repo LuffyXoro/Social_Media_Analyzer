@@ -25,11 +25,18 @@ def run(video_id):
     if data is None:
         return "Failed to fetch comments." 
     
+    print(type(data))
+    print(data)
+    
     #step - 2 : JSON -> Df
 
-    df=json_to_dataframe(data)
+    # step - 2 : JSON -> Df
+    items = data.get("items", [])
+    df = json_to_dataframe(items)
+
     if df.empty:
         return "No comments found for this video."
+
     
     #step - 3 : Text cleaning and storing intermediate results
     
