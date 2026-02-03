@@ -1,3 +1,6 @@
+# Provides centralized logging configuration for pipeline observability and debugging.
+
+
 import logging
 
 logger = logging.getLogger("social_analyzer")

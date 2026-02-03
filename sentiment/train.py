@@ -1,5 +1,7 @@
-# Separating the phases of training and evaluation into different functions for clarity and modularity
+# Trains the sentiment classification model and saves reusable model artifacts.
 
+
+import os
 import joblib
 
 from nltk.corpus import movie_reviews
@@ -54,9 +56,6 @@ def train_sentiment_model():
         f.write(report)
     print("Model and vectorizer saved successfully.")
 
-
-# if __name__ == "__main__":
-#     train_sentiment_model()
 
 
     

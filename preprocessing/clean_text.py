@@ -1,6 +1,7 @@
-import pandas as pd
+# Converts raw API JSON into structured DataFrames and performs text cleaning and normalization.
 
-# JSON TO DATAFRAME FUNCTION
+
+import pandas as pd
 
 def json_to_dataframe(items):
     records = []
@@ -20,10 +21,6 @@ def json_to_dataframe(items):
             continue
 
     return pd.DataFrame(records)
-
-
-
-# CLEANING TEXT FUNCTIONS
 
 import re 
 

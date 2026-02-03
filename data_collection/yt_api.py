@@ -1,3 +1,6 @@
+# Handles data ingestion from the YouTube Data API and returns raw comment JSON.
+
+
 import requests
 import os
 from dotenv import load_dotenv

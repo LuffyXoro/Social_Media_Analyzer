@@ -1,3 +1,6 @@
+# Centralizes project directory paths and ensures required data folders exist.
+
+
 from pathlib import Path
 
 DATA_DIR = Path("data")

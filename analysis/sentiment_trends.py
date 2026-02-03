@@ -1,3 +1,4 @@
+''' Computes time-based sentiment trends and ratio analysis for longitudinal insights. '''
 
 def sentiment_over_time(df):
     return (

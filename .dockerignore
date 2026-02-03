@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.venv/
+venv/
+data/
+raw_data/
+processed_data/
+*.csv
+*.log
+.git
+.gitignore
+

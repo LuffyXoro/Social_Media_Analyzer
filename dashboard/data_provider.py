@@ -1,3 +1,6 @@
+# Acts as a bridge between the pipeline and the dashboard by preparing UI-ready metrics.
+
+
 from run_pipeline import run
 
 def get_dashboard_data(video_id):

@@ -1,3 +1,5 @@
+# Performs keyword and frequency analysis to identify sentiment-driving terms.
+
 
 from collections import Counter
 import pandas as pd

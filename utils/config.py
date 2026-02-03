@@ -1,3 +1,6 @@
+# Manages configurable parameters such as API limits and model paths.
+
+
 import yaml 
 
 with open('config.yaml', 'r') as file:

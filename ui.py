@@ -1,3 +1,6 @@
+# Streamlit-based dashboard for interactive sentiment analysis and visualization.
+
+
 import streamlit as st
 import pandas as pd
 

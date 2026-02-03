@@ -1,3 +1,6 @@
+# Loads the trained sentiment model and performs inference with confidence scores (no training logic here).
+
+
 import joblib
 import os
 
